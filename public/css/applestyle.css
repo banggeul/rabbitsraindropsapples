@@ -1,0 +1,261 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito:400,700&display=swap');
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100vh;
+  font-family: Nunito, Geneva, sans-serif;
+  background: url(/instructions/task3/apple_instruction_0.png);
+  background-position: 0 0;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  overscroll-behavior-y: none;
+  position: fixed;
+  user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+canvas {
+  display: block;
+  background: url(/instructions/task3/apple_instruction_0.png);
+  background-position: 0 0;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+button {
+  background-color: #4B7B8C;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  margin: 4px 2px;
+  cursor: pointer;
+  font-family: sans-serif;
+  /* transform: translate(-50%, -50%); */
+  border-radius: 20px 20px;
+}
+
+.ruFinishedBtn {
+  position: absolute;
+  background-color: yellow;
+  color: black;
+  top: 70%;
+  left: 49%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1.5em;
+  width: 220px;
+  height: 100px;
+  /* line-height: 100px; */
+  border-radius: 50% 50%;
+  z-index: 100;
+  box-shadow: 2px 2px 20px black;
+  pointer-events: none;
+}
+
+.hidden {
+  display: none;
+}
+
+.top {
+  top: 30%;
+}
+
+.middle {
+  top: 40%;
+}
+
+.bottom {
+  bottom: 10%;
+}
+
+/* .instruction {
+  width: 100%;
+  height: 100vh;
+  background-color: #567a52;
+  display: flex;
+  justify-content: center;
+  color: white;
+  z-index: 10;
+}
+
+.instruction > div {
+  margin: auto;
+} */
+
+canvas {
+  display: none;
+}
+
+.thanks {
+  position: absolute;
+  text-align: center;
+  width: 60%;
+  margin: auto;
+  bottom: 10%;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  font-size: 2em;
+  color: white;
+}
+
+.thanks-img {
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  background-image: url(/images/thanks/bE.png);
+  background-size: cover;
+  display: none;
+  opacity: 0;
+}
+
+.thanks-en {
+  background-image: url(/images/thanks/bE.png);
+}
+
+.thanks-de {
+  background-image: url(/images/thanks/bD.png);
+}
+
+
+.startBtnContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  display: none;
+  opacity: 0;
+  width: 100%;
+  height: 100vh;
+  /* background-color: rgba(0,0,0,0.6); */
+  /* background-color: seagreen; */
+  color: white;
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; */
+  z-index: 100;
+}
+
+.instructionContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  display: none;
+  opacity: 0;
+  width: 100%;
+  height: 100vh;
+  background-image: url(/instructions/task3/apple_instruction_0.png);
+  /* background-size: cover; */
+  background-size: 100%;
+  background-position: 0 0;
+  /* background-color: seagreen; */
+  color: white;
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; */
+  z-index: 100;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  overscroll-behavior-y: contain;
+}
+
+.instructionWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  /* opacity: 0; */
+  width: 100%;
+  height: 100vh;
+  background-color: #65B5DC;
+  color: white;
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; */
+  z-index: 101;
+  text-align: center;
+  overscroll-behavior-y: contain;
+}
+
+.instructionWrapper > img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  width: 100%;
+  height: 100vh;
+  pointer-events: none;
+  overscroll-behavior-y: contain;
+  /* z-index: 101; */
+}
+
+.instructionWrapper .instruction {
+  position: absolute;
+  color: white;
+  font-size: 1.5em;
+  width: 376px; /*change back to 300 if needed*/
+  /* bottom: 10%;
+  left: 50%; */
+  /* transform: translate(-50%, 0); */
+  /* z-index: 102; */
+  display: none;
+  overflow: hidden;
+  overscroll-behavior-y: contain;
+}
+
+.instructionWrapper .nextBtn {
+  background-image: url(/instructions/right-angle-arrow.png);
+  background-position: center;
+  background-size: contain;
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  bottom: 20%;
+  right: 10%;
+  display: none;
+  pointer-events: none;
+}
+
+a#startBtn {
+  position: absolute;
+  bottom: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+}
+
+.startGameButton {
+  position: absolute;
+  text-align: center;
+  line-height: 100px;
+  bottom: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+  background-color: #004D80;
+  width: 220px;
+  height: 100px;
+  font-size: 1.5em;
+  border-radius: 50% 50%;
+}

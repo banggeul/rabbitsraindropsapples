@@ -1,0 +1,20 @@
+{
+  "name": "Hot Hand Thinking in Children",
+  "short_name": "RandomTask",
+  "description": "Experiments for Hot Hand Thinking in Children",
+  "version": "0.0.0.1",
+  "manifest_version": 1,
+  "author": "Bang Geul Han",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "landscape",
+  "theme_color": "#015174",
+  "background_color": "#F7F4F3",
+  "app": {
+    "urls": [
+    ],
+    "permissions": [
+      "fullscreen"
+    ]
+  }
+}
