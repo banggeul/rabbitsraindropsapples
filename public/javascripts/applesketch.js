@@ -1,5 +1,3 @@
-// let canvasY = 1024;
-// let canvasX = canvasY * 0.75;
 
 let myObjectNum = 10;
 let myObjectSize;
@@ -7,7 +5,6 @@ let myObjectSize;
 let myObjectX = [];
 let myObjectY = [];
 let overMyObject = [];
-// let locked = [];
 let xOffset = [];
 let yOffset = [];
 
@@ -55,7 +52,6 @@ let gameMode = "menu";
 
 
 window.preload = function() {
-  // preload() runs once
   apple = loadImage("/images/apples/apple.png");
   apple_shadow = loadImage("/images/apples/apple_shadow.png");
 
@@ -72,7 +68,6 @@ window.preload = function() {
 window.setup = function() {
   myCanvas = createCanvas(windowWidth, windowHeight);
   myObjectSize = windowWidth / myObjectNum;
-  // bigReset(gameMode);
   setUpStartMenu();
   textSize(myObjectSize / 3);
 }
@@ -83,8 +78,6 @@ window.draw = function() {
     background(220);
     image(tree, 0, 0, width, height);
     //check if the mouse is over the object or not
-    // checkTouchOver();
-    // checkOnTree();
     drawObjects();
     if (showOrderNumbers) {
       fill(230);
@@ -95,16 +88,12 @@ window.draw = function() {
     }
   }
   //Visualize cut off point for onTree
-  //stroke(0);
-  //strokeWeight(10);
-  //line(0, height * .57, width, height * .57);
 }
 
 function setUpStartMenu() {
   image(bg_menu, 0, 0, width, height);
   gameMode = "menu";
   let btn_sunLeft = createButton('Sun Left');
-  // btn_sunLeft.position(width*.3, height*.2);
   btn_sunLeft.touchStarted(() => {
     initGame('sunLeft');
   });
@@ -115,7 +104,6 @@ function setUpStartMenu() {
   btn_sunLeft.addClass('top');
 
   let btn_sunRight = createButton('Sun Right');
-  // btn_sunRight.position(width*.3, height*.4);
   btn_sunRight.touchStarted(() => {
     initGame('sunRight');
   });
@@ -126,7 +114,6 @@ function setUpStartMenu() {
   btn_sunRight.addClass('middle');
 
   let btn_birds = createButton('Bird Nest');
-  // btn_birds.position(width*.3, height*.6);
   btn_birds.touchStarted(() => {
     initGame('birds');
   });
@@ -197,7 +184,6 @@ function drawObjects() {
       image(object_shadow, myObjectX[i], myObjectY[i], myObjectSize, myObjectSize);
     }
     noFill();
-    //rect(myObjectX[i], myObjectY[i], myObjectSize, myObjectSize);
 
     if (showOrderNumbers) {
       textSize(myObjectSize / 1.4);
@@ -291,10 +277,6 @@ window.touchStarted = function() {
 
   if (orderCounter >= myObjectNum - 1 && mouseX > 0 && mouseX < 100 && mouseY > 0 && mouseY < 100) {
     showOrderNumbers = !showOrderNumbers;
-    // for (let i = 0; i < myObjectNum; i++) {
-    //   hasMoved[j] = false;
-    //   noMoreMove[i] = false;
-    // }
 
     //game is all finished
     //record the end time
@@ -306,7 +288,6 @@ window.touchStarted = function() {
   }
   if (showOrderNumbers && mouseX < width && mouseX > width - myObjectSize && mouseY < height && mouseY > height - myObjectSize) {
     saveCanvas(myCanvas, dateAndTimeStarted + ".jpg");
-    // bigReset();
     setUpStartMenu();
   }
   return false;
@@ -320,7 +301,6 @@ window.touchMoved = function() {
                 break;
     }
   }
-  // console.log(mouseX, mouseY);
   return false;
 }
 
@@ -332,23 +312,5 @@ window.touchEnded = function() {
     }
   }
   console.log("touch ended");
-  // return false;
 }
 
-// function mouseDragged() {
-//   for (let i = 0; i < myObjectNum; i++) {
-//     if (locked[i] && !noMoreMove[i]) {
-//       myObjectX[i] = mouseX - xOffset[i];
-//       myObjectY[i] = mouseY - yOffset[i];
-//     }
-//   }
-// }
-// function mouseReleased() {
-//   for (let i = 0; i < myObjectNum; i++) {
-//     locked[i] = false;
-//     if (isMoving[i]) {
-//       isMoving[i] = false;
-//       hasMoved[i] = true;
-//     }
-//   }
-// }

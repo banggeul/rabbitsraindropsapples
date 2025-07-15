@@ -34,7 +34,6 @@ MongoClient.connect(dbConnectionString,{ useNewUrlParser: true, useUnifiedTopolo
     const collectionRaindotsBerlin = db.collection('raindotsBerlin');
     const collectionApplesBerlin = db.collection('applesBerlin');
     const collectionSubjectsBerlin = db.collection('subjectNumbersBerlin');
-    //const collectionSequence = db.collection('sequenceSet');
     
 
     app.get('/', (req, res) => {
@@ -55,7 +54,6 @@ MongoClient.connect(dbConnectionString,{ useNewUrlParser: true, useUnifiedTopolo
     })
 
     app.get('/logRabbits', (req, res) => {
-      // res.sendFile(__dirname + '/public/');
       db.collection('rabbits').find().toArray()
         .then(results =>{
           console.log(results);
@@ -65,7 +63,6 @@ MongoClient.connect(dbConnectionString,{ useNewUrlParser: true, useUnifiedTopolo
     })
 
     app.get('/logRabbitsBerlin', (req, res) => {
-      // res.sendFile(__dirname + '/public/');
       db.collection('rabbitsBerlin').find().toArray()
         .then(results =>{
           console.log(results);
@@ -75,7 +72,6 @@ MongoClient.connect(dbConnectionString,{ useNewUrlParser: true, useUnifiedTopolo
     })
     
     app.get('/logRaindots', (req, res) => {
-      // res.sendFile(__dirname + '/public/');
       db.collection('raindots').find().toArray()
         .then(results =>{
           console.log(results);
@@ -85,7 +81,6 @@ MongoClient.connect(dbConnectionString,{ useNewUrlParser: true, useUnifiedTopolo
     })
 
     app.get('/logRaindotsBerlin', (req, res) => {
-      // res.sendFile(__dirname + '/public/');
       db.collection('raindotsBerlin').find().toArray()
         .then(results =>{
           console.log(results);
@@ -94,7 +89,6 @@ MongoClient.connect(dbConnectionString,{ useNewUrlParser: true, useUnifiedTopolo
         .catch(error=>console.error(error));
     })
     app.get('/logApples', (req, res) => {
-      // res.sendFile(__dirname + '/public/');
       db.collection('apples').find().toArray()
         .then(results =>{
           console.log(results);
@@ -104,7 +98,6 @@ MongoClient.connect(dbConnectionString,{ useNewUrlParser: true, useUnifiedTopolo
     })
 
     app.get('/logApplesBerlin', (req, res) => {
-      // res.sendFile(__dirname + '/public/');
       db.collection('applesBerlin').find().toArray()
         .then(results =>{
           console.log(results);
@@ -114,7 +107,6 @@ MongoClient.connect(dbConnectionString,{ useNewUrlParser: true, useUnifiedTopolo
     })
     app.get('/sequence', (req, res) => {
       //do something
-      // res.sendFile(__dirname + '/public/');
       db.collection('sequenceSet').find().toArray()
         .then(results =>{
           res.json(results);
@@ -124,22 +116,18 @@ MongoClient.connect(dbConnectionString,{ useNewUrlParser: true, useUnifiedTopolo
     })
     app.get('/subjects', (req, res) => {
       //do something
-      // res.sendFile(__dirname + '/public/');
       db.collection('subjectNumbers').find().toArray()
         .then(results =>{
           res.json(results);
-          // console.log(results);
         })
         .catch(error=>console.error(error));
     })
 
     app.get('/subjectsBerlin', (req, res) => {
       //do something
-      // res.sendFile(__dirname + '/public/');
       db.collection('subjectNumbersBerlin').find().toArray()
         .then(results =>{
           res.json(results);
-          // console.log(results);
         })
         .catch(error=>console.error(error));
     })
@@ -150,7 +138,6 @@ MongoClient.connect(dbConnectionString,{ useNewUrlParser: true, useUnifiedTopolo
       let collection = db.collection("subjectNumbers");
       collection.findOne({"_id": o_id})
       .then(result=>{
-        // res.send(result);
         res.json(result);
       })
       .catch(error => console.error(error));
@@ -162,7 +149,6 @@ MongoClient.connect(dbConnectionString,{ useNewUrlParser: true, useUnifiedTopolo
       let collection = db.collection("subjectNumbersBerlin");
       collection.findOne({"_id": o_id})
       .then(result=>{
-        // res.send(result);
         res.json(result);
       })
       .catch(error => console.error(error));
@@ -176,7 +162,6 @@ MongoClient.connect(dbConnectionString,{ useNewUrlParser: true, useUnifiedTopolo
         .then(result=>{
           console.log(result);
           res.json(result);
-          // res.redirect('/')
         })
         .catch(error => console.error(error));
     })
@@ -187,7 +172,6 @@ MongoClient.connect(dbConnectionString,{ useNewUrlParser: true, useUnifiedTopolo
         .then(result=>{
           console.log(result);
           res.json(result);
-          // res.redirect('/')
         })
         .catch(error => console.error(error));
     })
@@ -198,7 +182,6 @@ MongoClient.connect(dbConnectionString,{ useNewUrlParser: true, useUnifiedTopolo
         .then(result=>{
           console.log(result);
           res.json(result);
-          // res.redirect('/')
         })
         .catch(error => console.error(error));
     })
@@ -209,7 +192,6 @@ MongoClient.connect(dbConnectionString,{ useNewUrlParser: true, useUnifiedTopolo
         .then(result=>{
           console.log("you posted something on the subject collection. " + result.insertedId);
           res.json(result);
-          // res.redirect('/')
         })
         .catch(error => console.error(error));
     })
@@ -217,7 +199,6 @@ MongoClient.connect(dbConnectionString,{ useNewUrlParser: true, useUnifiedTopolo
     app.put('/update_subject', (req, res)=>{
       res.send('Got a PUT request');
       console.log(req.body);
-      // console.log(req.body.data.data);
       let o_id = new mongo.ObjectId(req.body.data.id);
       let collection = db.collection("subjectNumbers");
       collection.findOneAndUpdate({_id: o_id}, {$set: {experiment: req.body.data.experiment}}, {upsert: false}, function(err,doc) {
@@ -235,7 +216,6 @@ MongoClient.connect(dbConnectionString,{ useNewUrlParser: true, useUnifiedTopolo
         .then(result=>{
           console.log(result);
           res.json(result);
-          // res.redirect('/')
         })
         .catch(error => console.error(error));
     })
@@ -246,7 +226,6 @@ MongoClient.connect(dbConnectionString,{ useNewUrlParser: true, useUnifiedTopolo
         .then(result=>{
           console.log(result);
           res.json(result);
-          // res.redirect('/')
         })
         .catch(error => console.error(error));
     })
@@ -257,7 +236,6 @@ MongoClient.connect(dbConnectionString,{ useNewUrlParser: true, useUnifiedTopolo
         .then(result=>{
           console.log(result);
           res.json(result);
-          // res.redirect('/')
         })
         .catch(error => console.error(error));
     })
@@ -268,7 +246,6 @@ MongoClient.connect(dbConnectionString,{ useNewUrlParser: true, useUnifiedTopolo
         .then(result=>{
           console.log("you posted something on the subject collection. " + result.insertedId);
           res.json(result);
-          // res.redirect('/')
         })
         .catch(error => console.error(error));
     })
@@ -276,7 +253,6 @@ MongoClient.connect(dbConnectionString,{ useNewUrlParser: true, useUnifiedTopolo
     app.put('/update_subjectBerlin', (req, res)=>{
       res.send('Got a PUT request');
       console.log(req.body);
-      // console.log(req.body.data.data);
       let o_id = new mongo.ObjectId(req.body.data.id);
       let collection = db.collection("subjectNumbersBerlin");
       collection.findOneAndUpdate({_id: o_id}, {$set: {experiment: req.body.data.experiment}}, {upsert: false}, function(err,doc) {
@@ -296,4 +272,3 @@ app.listen(port, function(){
   console.log(`listening on ${port}`);
 })
 
-// export default { resultArray: resultArray }

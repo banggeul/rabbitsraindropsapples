@@ -61,9 +61,7 @@ const englishMsgs = {
 }
 
 //get the current data stored, unpack it as object
-// const {
 //   data
-// } = store.getState();
 //create an empty object to store the new experiment data
 let experiment = {};
 let sessionData = {};
@@ -94,7 +92,6 @@ for (let i = 0; i < 30; i++) {
 const $interface = document.querySelector("#interfaceContainer");
 const $inputAgeSubjectNum = document.querySelector('#inputAgeSubjectNum');
 const $inputGender = document.querySelector('#inputGender');
-// const $submitLanguage = document.querySelector('#submitLanguage');
 
 
 const $rabbitTaskButton = document.querySelector('#rabbitTaskButton');
@@ -132,10 +129,8 @@ document.body.addEventListener('touchstart', () => {
   document.activeElement.blur();
 });
 
-//check time zone;
 const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 //this is for testing purpose only
-// const timezone = "Europe/Berlin"
 console.log(timezone);
 let startIndex = 1;
 let databaseURL = '/subjects';
@@ -163,20 +158,14 @@ fetch(databaseURL)
         for (let j in data[i]) {
           innerarray.push(data[i][j]);
         }
-        // console.log(innerarray);
-        // subjects.push(innerarray[1]);
         let thisSubject = innerarray[1];
         const thisSubjectId = innerarray[0];
-        // console.log(thisSubjectId);
         if (thisSubject.uniqueId == null) {
           thisSubject.uniqueId = thisSubjectId;
         }
         const ageGroupIndex = parseInt(thisSubject.age.year) - 1;
         ageSortedSubjects[ageGroupIndex].push(thisSubject);
-        // sortedSubjectIds[ageGroupIndex].push(thisSubjectId);
       }
-      // console.log(ageSortedSubjects);
-      // console.log(subjects[0]);
       //do something
       //first check if this is a redirect or not, if it's a redirect
       //then load the data on interface and
@@ -193,7 +182,6 @@ fetch(databaseURL)
       } else {
         //if not, this is a new experiment
         fadeInInterface($interface);
-        // console.log("fade in the interface");
       }
     });
   })
@@ -208,18 +196,8 @@ for (let i = startIndex; i < startIndex + 50; i++) {
   document.querySelector('#subjectNumOptions').innerHTML += `<option value="${i}">${i}</option>`
 }
 //bind the click event listeners to the buttons
-// $submitLanguage.addEventListener('click', submitLanguageOption);
-// function submitLanguageOption(){
-//   let ele = document.getElementsByName('radio');
-//   for(let i = 0; i < ele.length; i++) {
-//       if(ele[i].checked)
-//       lang = ele[i].value;
-//   }
 //   //now hide the button
-//   fadeOut($submitLanguage, false);
 //   //show the next section
-//   fadeIn($inputAgeSubjectNum);
-// }
 
 
 
@@ -239,12 +217,10 @@ function changeHandler(event) {
 function changeLanguage(msgs) {
   for (const key in msgs) {
     let selector = '#' + key;
-    // console.log(selector, msgs[key]);
     const $msg = document.querySelector(selector);
     if($msg != null){
       $msg.innerHTML = msgs[key];
     }
-    // console.log(document.querySelector(selector));
   }
 
   if (!newSubject) {
@@ -296,17 +272,10 @@ function generateNewID() {
           for (let j in data[i]) {
             innerarray.push(data[i][j]);
           }
-          // console.log(innerarray);
-          // subjects.push(innerarray[1]);
           let thisSubject = innerarray[1];
           const thisSubjectId = innerarray[0];
-          // // console.log(thisSubjectId);
-          // if (thisSubject.uniqueId == null) {
-          //   thisSubject.uniqueId = thisSubjectId;
-          // }
           const ageGroupIndex = parseInt(thisSubject.age.year) - 1;
           ageSortedSubjects[ageGroupIndex].push(thisSubject);
-          // sortedSubjectIds[ageGroupIndex].push(thisSubjectId);
         }
         //done sorting
         //now generate the new id
@@ -326,7 +295,6 @@ function generateNewID() {
         newSubject = true;
       })
     }).catch((err) => {console.log(err)});
-  //create a new subject id;
 
 }
 
@@ -340,15 +308,9 @@ function resetAllInput() {
   document.querySelector('#tryAgain').style.display = "none";
   document.querySelector('#genderOptions').selectedIndex = 0;
   document.querySelector('#parentalConsentOptions').selectedIndex = 0;
-  // document.querySelector('#notesInput').value = "";
 }
 
-// document.querySelector('#name').addEventListener('change', function() {
 //   //if there's something in the subjectID then enable the check button
-//   if (this.value > 0 && $checkSubjectID.classList.contains('disabled')) {
-//     $checkSubjectID.classList.remove('disabled');
-//   }
-// })
 
 document.querySelector("#ageYearOptions").addEventListener('change', function() {
   //if age options change, first reset everything
@@ -360,7 +322,6 @@ document.querySelector("#ageYearOptions").addEventListener('change', function() 
   $subjectNumOptions.disabled = true;
 
   if($inputGender.style.display = "block"){
-    //fadeOut($inputGender,true);
     $inputGender.style.display = "none";
   }
   if(this.value > 0 && $ageMonthOptions.value >= 0){
@@ -371,13 +332,11 @@ document.querySelector("#ageYearOptions").addEventListener('change', function() 
 
 document.querySelector("#ageMonthOptions").addEventListener('change', function() {
 
-  // $ageYearOptions.selectedIndex = 0;
   $generateNewID.classList.add('disabled');
   $checkSubjectID.classList.add('disabled');
   $subjectNumOptions.selectedIndex = 0;
 
   if($inputGender.style.display = "block"){
-    //fadeOut($inputGender,true);
     $inputGender.style.display = "none";
   }
 
@@ -389,10 +348,7 @@ document.querySelector("#ageMonthOptions").addEventListener('change', function()
 
 document.querySelector("#genderOptions").addEventListener('change', function() {
   if(this.value != "null"){
-    // $generateNewID.classList.remove('disabled');
-    // document.querySelector('#subjectNumOptions').disabled = false;
     if(document.querySelector("#errorMsg")!=null){
-      // document.querySelector('#errorMsg').style.display = "none";
       this.classList.remove('error');
       let error = document.querySelector('#errorMsg');
       error.remove();
@@ -402,10 +358,7 @@ document.querySelector("#genderOptions").addEventListener('change', function() {
 
 document.querySelector("#parentalConsentOptions").addEventListener('change', function() {
   if(this.value != "null"){
-    // $generateNewID.classList.remove('disabled');
-    // document.querySelector('#subjectNumOptions').disabled = false;
     if(document.querySelector("#errorMsgParentalConsent")!=null){
-      // document.querySelector('#errorMsg').style.display = "none";
       this.classList.remove('error');
       let error = document.querySelector('#errorMsgParentalConsent');
       error.remove();
@@ -421,7 +374,6 @@ document.querySelector('#subjectNumOptions').addEventListener('change', function
     }
     //but hide the gender option and task buttons
     if($inputGender.style.display = "block"){
-      //fadeOut($inputGender,true);
       $inputGender.style.display = "none";
     }
   } else {
@@ -443,14 +395,12 @@ function findSubject(n) {
     let subjectObj = subjects[i][1][0];
     if (subjectObj.subjectNum == subjectNum) {
       //found it
-      // currentSubjectID = subjects[i][0];
       return subjectObj;
     }
   }
 }
 //////
 function findSubjectByAge(n, age) {
-  // console.log(n, age);
   const ageGroupArray = ageSortedSubjects[age - 1];
 
   for (let i = 0; i < ageGroupArray.length; i++) {
@@ -463,9 +413,7 @@ function findSubjectByAge(n, age) {
 }
 
 function checkSubjectID() {
-  // const subjectNum = document.querySelector('#name').value;
   const subjectNum = parseInt(document.getElementById('subjectNumOptions').value);
-  // const ageGroup = ageYearOptions.options[ageYearOptions.selectedIndex].value;
   const ageGroup = parseInt(document.getElementById('ageYearOptions').value);
 
   resetAllInput();
@@ -493,15 +441,12 @@ function checkSubjectID() {
     document.querySelector('#generateNewIDButton').classList.remove('disabled');
     document.querySelector('#subjectInfoLabel').innerHTML = "This is an existing participant. Please make sure the info below is correct.";
     const ageMonthOptions = document.getElementById('ageMonthOptions');
-    // ageMonthOptions.options[ageMonthOptions.selectedIndex].value = subjectObj.age.month;
     ageMonthOptions.value = subject.age.month;
 
     const genderOptions = document.getElementById('genderOptions');
-    // genderOptions.options[genderOptions.selectedIndex].value = subjectObj.gender;
     genderOptions.value = subject.gender;
 
     const parentalConsentOptions = document.getElementById('parentalConsentOptions');
-    // genderOptions.options[genderOptions.selectedIndex].value = subjectObj.gender;
     if(subject.parentalConsent != null){
       parentalConsentOptions.value = subject.parentalConsent;
     } else {
@@ -509,9 +454,6 @@ function checkSubjectID() {
     }
     
     //populate the notes if there's any
-    // if(subject.notes != null){
-    //   document.querySelector('#notesInput').value = subject.notes;
-    // }
     let task = 0;
     if (subject.tasks.one == 1) {
       document.querySelector('#rabbitTaskButton').classList.add("disabled");
@@ -534,12 +476,10 @@ function checkSubjectID() {
       showNewTestButton();
     }
 
-    // $inputGender.style.display = "block";
     fadeIn($inputGender);
   } else {
     //this is a new subject
     newSubject = true;
-    // console.log("nothing matching");
     generateNewID();
     let msg ='';
     if (lang == "en") {
@@ -572,16 +512,13 @@ function showNewTestButton(){
 }
 
 $startNewTest.addEventListener('click',()=>{
-  // window.location.reload(1);
   location.href = "/";
 })
 
 //bind the click event listener with the submit button
-// $getUserContext.addEventListener('click', getUserContext);
 //when the submit button is clicked do this
 function updateSubject() {
   //get all the values from the input elements
-  // const subjectNum = document.querySelector('#name').value;
   const subjectNum = document.querySelector('#subjectNumOptions').value;
   //
   const ageYearOptions = document.getElementById('ageYearOptions');
@@ -590,16 +527,11 @@ function updateSubject() {
   const ageMonth = ageMonthOptions.options[ageMonthOptions.selectedIndex].value;
   //
   const genderOptions = document.getElementById('genderOptions');
-  // console.log(genderOptions.options)
   const gender = genderOptions.options[genderOptions.selectedIndex].value;
 
   const parentalConsentOptions = document.getElementById('parentalConsentOptions');
-  // console.log(genderOptions.options)
   const parentalConsent = parentalConsentOptions.options[parentalConsentOptions.selectedIndex].value;
-  // const notes = document.querySelector("#notesInput").value;
   //
-  // const germanOn = document.querySelector('#languageToggleSwitch').checked;
-  // console.log(radios.value);
   let ele = document.getElementsByName('radio');
   for(let i = 0; i < ele.length; i++) {
       if(ele[i].checked)
@@ -612,7 +544,6 @@ function updateSubject() {
   //store it in the variable experiment
   experiment.subjectNum = subjectNum;
   experiment.lang = language;
-  // experiment.timeLimit = timeLimit;
   experiment.timezone = timezone;
   experiment.timestamp = timestamp;
   experiment.windowSize = {
@@ -631,7 +562,6 @@ function updateSubject() {
 
   experiment.gender = gender;
   experiment.parentalConsent = parentalConsent;
-  // experiment.notes = notes;
 }
 
 function addNewSubject(e) {
@@ -643,20 +573,15 @@ function addNewSubject(e) {
   postData(postDataURL, {
       experiment
     })
-    // postData('./raindots',{data})
     .then((pdata) => {
-      // console.log("here's the pdata: " + pdata.insertedId); // JSON data parsed by `response.json()` call
       //get the newly inserted id to pass as with the url
       experiment.uniqueId = pdata.insertedId;
       if (e.target.name == "one") {
         fadeOutInterface($interface, "task1");
-        // location.href = "task1"+"?subject="+experiment.subjectNum;
       } else if (e.target.name == "two") {
         fadeOutInterface($interface, "task2");
-        // location.href = "task2"+"?subject="+experiment.subjectNum;
       } else if (e.target.name == "three") {
         fadeOutInterface($interface, "task3");
-        // location.href = "task3"+"?subject="+experiment.subjectNum;
       }
     });
 }
@@ -697,7 +622,6 @@ function startTheTask(e) {
 
   if(document.getElementById('parentalConsentOptions').value == "null"){
     //highlight the parental consent option
-    // console.log("check the parental consent:"+document.getElementById('genderOptions').value+"!!!");
     document.getElementById('parentalConsentOptions').classList.add("error");
     const parentalOptionContainer = document.getElementById('parentalConsentOptionRow');
     let validationText = document.createElement('label');
@@ -725,13 +649,10 @@ function startTheTask(e) {
     // location.
     if (e.target.name == "one") {
       fadeOutInterface($interface, "task1");
-      // location.href = "task1"+"?subject="+experiment.subjectNum;
     } else if (e.target.name == "two") {
       fadeOutInterface($interface, "task2");
-      // location.href = "task2"+"?subject="+experiment.subjectNum;
     } else if (e.target.name == "three") {
       fadeOutInterface($interface, "task3");
-      // location.href = "task3"+"?subject="+experiment.subjectNum;
     }
   }
 }
@@ -746,10 +667,8 @@ function isEmpty(obj) {
 
 
 ////////////
-//some utility functions for fading in and out using Greensock animation library (GSAP)
 function fadeIn(elem, duration = 1, delay = 0, display = "block") {
   elem.style.display = display;
-  //elem.style.opacity = 0;
   gsap.to(elem, {
     duration: duration,
     ease: "power1.inOut",
@@ -796,7 +715,6 @@ function fadeOutInterface(elem, onCompleteParam, delay = 0) {
 }
 
 function redirect(param) {
-  // console.log(param + "?subject=" + experiment.subjectNum + "&age=" + experiment.age.year + "&id=" + experiment.uniqueId);
   location.href = param+"?subject="+experiment.subjectNum+"&age="+experiment.age.year+"&id="+experiment.uniqueId;
 }
 

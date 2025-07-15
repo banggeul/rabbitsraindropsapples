@@ -20,7 +20,6 @@ const dataReducer = (state=initialState, action) => {
       {
         const data = [...state.data, action.payload.data];
         postData('./raindots',{data})
-        // postData('./raindots',{data})
         .then((data) => {
           console.log("here's the data: " + data); // JSON data parsed by `response.json()` call
         });
@@ -30,7 +29,6 @@ const dataReducer = (state=initialState, action) => {
       {
           const data = [...state.data, action.payload.data];
           postData('./raindotsBerlin',{data})
-          // postData('./raindots',{data})
           .then((data) => {
             console.log("here's the data: " + data); // JSON data parsed by `response.json()` call
           });
