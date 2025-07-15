@@ -1,4 +1,4 @@
-# Rabbits, Raindots, and Apples – Hot Hand Thinking in Children (US and Berlin)
+# Rabbits, Raindots, and Apples – Hot Hand Thinking in Children
 
 This is an archived Node.js + Express web application originally deployed on Heroku and built for iPad Pro(12in). It interfaces with a MongoDB Atlas cluster and provides multiple experiment tasks and logging endpoints.
 
